@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TeamTower : MonoBehaviour
+public class TeamTower : StructureMain
 {
     public MeshRenderer mR;
     public List<UnitMain> unitsInThisTeam = new List<UnitMain>();
 
+    private Vector3 lastPos; 
 
     //Afin de tracker plus facilement le team manager à 
     private int indexToTarget;
@@ -33,10 +34,28 @@ public class TeamTower : MonoBehaviour
         mat = mR.material;
         mat.color = teamColor;
         mR.material = mat;
-    } 
+    }
 
-    public void GenerateSpawnZone()
+    private void Update()
     {
+        //faudra check de façon plus propre le déplecement 
+        if (lastPos !=transform.position)
+        {
+            onMouvement = true;
+            lastPos = transform.position;
+            Debug.Log("Deplacment");
+        }
+        else
+        {
+            onMouvement = false;
+        }
+
+        if (onSlot)
+        {
+            Debug.Log("on slot");
+        }
+
+ 
 
     }
 

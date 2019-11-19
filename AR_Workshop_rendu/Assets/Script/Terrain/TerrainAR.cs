@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(MeshRenderer), typeof(MeshFilter), typeof(MeshRenderer))]
-public class Terrain : MonoBehaviour
+public class TerrainAR : MonoBehaviour
 {
-    public static Terrain instance;
+    public static TerrainAR instance;
     public GameObject slotPrefab;
 
     public int terrainFractionNumber;
@@ -38,6 +38,10 @@ public class Terrain : MonoBehaviour
         float fractionHeigth = terrainHeigth / terrainFractionNumber;
         for (int i = 0; i < 2; i++)
         {
+            if (true)
+            {
+
+            }
             float posX = transform.position.x - terrainHeigth / 2 + fractionHeigth / 2 + i * (fractionHeigth * (terrainFractionNumber - 1));
             int currentTeam = i;
 
@@ -47,6 +51,8 @@ public class Terrain : MonoBehaviour
                 Vector3 pos = new Vector3(posX, transform.position.y + 0.2f, posY);
                 GameObject newSlot = Instantiate(slotPrefab, pos, Quaternion.Euler(90f , 0f , 0f));
                 newSlot.transform.localScale = new Vector3(fractionHeigth - fractionHeigth/20, fractionWidth - fractionWidth/20, 1);
+                BuildingSlot slotScript = newSlot.GetComponent<BuildingSlot>();
+                slotScript.teamNumber = i;
             }
         }
 

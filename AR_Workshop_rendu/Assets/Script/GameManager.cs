@@ -44,12 +44,12 @@ public class GameManager : MonoBehaviour
             if (!ValidateTerrain && EnoughTeamTower)
             {
                 Debug.Log("Phase3");
-                Terrain.instance.SetScale();
+                TerrainAR.instance.SetScale();
                 if (Input.GetKeyDown(KeyCode.R))
                 {
                     Debug.Log("Phase4");
                     ValidateTerrain = true;
-                    Terrain.instance.CreateSlot();
+                    TerrainAR.instance.CreateSlot();
                     SetupDone = true;
                 }
             }
@@ -62,5 +62,4 @@ public class GameManager : MonoBehaviour
     {
         Instantiate(teamTowerPrefab, pos, Quaternion.identity);
     }
-
 }

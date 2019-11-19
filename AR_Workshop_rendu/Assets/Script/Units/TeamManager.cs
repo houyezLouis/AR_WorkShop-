@@ -29,8 +29,9 @@ public class TeamManager : MonoBehaviour
     {
         AssignUnitTeamTarget();
         Vector3 center = teamList[0].transform.position + ((teamList[1].transform.position - teamList[0].transform.position) / 2);
-        Terrain.instance.transform.position = center;
-        Terrain.terrainHeigth = Mathf.Abs(teamList[1].transform.position.x - teamList[0].transform.position.x);
+        TerrainAR.instance.transform.position = center;
+        TerrainAR.terrainHeigth = teamList[1].transform.position.x - teamList[0].transform.position.x;
+
         return Vector3.Distance(teamList[0].transform.position, teamList[1].transform.position);
     }
 

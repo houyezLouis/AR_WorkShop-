@@ -12,6 +12,13 @@ public class TowerInfo : MonoBehaviour
 
     public Action OnNotAttacked;
 
+    public LifeBar myLifeBar;
+
+    private void Start()
+    {
+        myLifeBar.startLife = life;
+    }
+
     public void TakeDamage(int value)
     {
         life += value;
@@ -21,6 +28,7 @@ public class TowerInfo : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(CheckIsAttaked());
 
+        myLifeBar.SetLife(life);
         if (life <= 0)
         {
             

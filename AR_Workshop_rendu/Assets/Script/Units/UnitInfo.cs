@@ -19,6 +19,8 @@ public class UnitInfo : MonoBehaviour
 
     public CapsuleCollider rangeCollider;
 
+    public LifeBar myLifeBar;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,7 @@ public class UnitInfo : MonoBehaviour
 
         rangeCollider.radius = range;
         GetComponent<NavMeshAgent>().speed = speed;
+        myLifeBar.startLife = life;
     }
 
     public void SetTeam(UnitTeam value)
@@ -41,6 +44,7 @@ public class UnitInfo : MonoBehaviour
     public void TakeDamage(int value)
     {
         life += value;
+        myLifeBar.SetLife(life);
 
         if (life <= 0)
         {

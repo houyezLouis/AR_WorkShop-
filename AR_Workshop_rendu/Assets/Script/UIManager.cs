@@ -20,13 +20,10 @@ public class UIManager : MonoBehaviour
         {
             instance = this;
         }
-
-
     }
 
     private void Start()
     {
-
         TerrainInitialisation();
     }
 
@@ -44,7 +41,6 @@ public class UIManager : MonoBehaviour
 
         instruction.SetActive(true);
         btn_ValidatePlacment.SetActive(true);
-
     }
 
     public void ValidPlacement()
@@ -53,7 +49,5 @@ public class UIManager : MonoBehaviour
         btn_ValidatePlacment.SetActive(false);
        // btn_Play.SetActive(true);
         GameManager.instance.gameIsStart = true;
-
     }
-
 }

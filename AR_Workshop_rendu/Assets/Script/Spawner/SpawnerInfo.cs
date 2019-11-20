@@ -15,20 +15,29 @@ public class SpawnerInfo : MonoBehaviour
     public string towerEnnemyName = "RedTower";
 
     // Start is called before the first frame update
-    void Start()
+    //void Start()
+    //{
+    //    StartCoroutine(SpawnUnit());
+    //}
+    private void OnEnable()
     {
         StartCoroutine(SpawnUnit());
     }
 
     IEnumerator SpawnUnit()
     {
+        yield return new WaitForSeconds(delay);
         GameObject newUnit = Instantiate(prefab);
         newUnit.transform.position = spawnPos.position;
 
         newUnit.GetComponent<UnitInfo>().unitTeam = towerTeam;
         newUnit.GetComponent<IAUnit>().SetDestination(GameObject.Find(towerEnnemyName).transform);
 
-        yield return new WaitForSeconds(delay);
         StartCoroutine(SpawnUnit());
+    }
+
+    private void OnDisable()
+    {
+        StopCoroutine(SpawnUnit());
     }
 }

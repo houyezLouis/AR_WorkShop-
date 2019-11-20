@@ -49,11 +49,6 @@ public class BuildingSlot : MonoBehaviour
         }
     }
 
-    void SetStructure()
-    {
-
-    }
-
     private void OnTriggerExit(Collider other)
     {
         if (currentTower == other.gameObject)

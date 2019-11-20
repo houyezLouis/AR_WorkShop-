@@ -36,6 +36,21 @@ public class TeamManager : MonoBehaviour
 
         return Vector3.Distance(red.towerTransform.position, blue.towerTransform.position);
     }
+
+    public teamTowerInfo GetTeamInfo(UnitTeam team)
+    {
+        if(team == red.myTeam)
+        {
+            return red;
+        }
+
+        if (team == blue.myTeam)
+        {
+            return blue;
+        }
+
+        return red;
+    }
 }
 
 

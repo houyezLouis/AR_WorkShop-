@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="Tower2" size="8.500000 14.603383" />
+    <ImageTarget name="Knight2" size="8.500000 14.635339" />
+    <ImageTarget name="Rider2" size="8.500000 14.539474" />
+    <ImageTarget name="Archer2" size="8.500000 14.603383" />
+    <ImageTarget name="Rider" size="8.500000 14.539474" />
+    <ImageTarget name="Tower" size="8.500000 14.603383" />
+    <ImageTarget name="Knight" size="8.500000 14.635339" />
+    <ImageTarget name="Archer" size="8.500000 14.603383" />
+  </Tracking>
+</QCARConfig>

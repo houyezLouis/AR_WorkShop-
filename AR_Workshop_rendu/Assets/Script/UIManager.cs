@@ -20,25 +20,40 @@ public class UIManager : MonoBehaviour
         {
             instance = this;
         }
+
+
     }
 
-    public void ValidPlacement() {
-        instruction.SetActive(false);
-        btn_ValidatePlacment.SetActive(false);
-        btn_ValidateTaille.SetActive(true);
-        sld_Width.gameObject.SetActive(true);
-        sld_Heigth.gameObject.SetActive(true);
+    private void Start()
+    {
+
+        TerrainInitialisation();
+    }
+
+    private void TerrainInitialisation()
+    {
         TerrainAR.instance.SetWidth(sld_Width);
         TerrainAR.instance.SetHeigth(sld_Heigth);
     }
-
 
     public void ValideSize()
     {
         btn_ValidateTaille.SetActive(false);
         sld_Width.gameObject.SetActive(false);
         sld_Heigth.gameObject.SetActive(false);
-        btn_Play.SetActive(true);
+
+        instruction.SetActive(true);
+        btn_ValidatePlacment.SetActive(true);
 
     }
+
+    public void ValidPlacement()
+    {
+        instruction.SetActive(false);
+        btn_ValidatePlacment.SetActive(false);
+       // btn_Play.SetActive(true);
+        GameManager.instance.gameIsStart = true;
+
+    }
+
 }

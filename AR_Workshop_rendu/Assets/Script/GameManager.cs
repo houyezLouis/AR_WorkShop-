@@ -63,7 +63,6 @@ public class GameManager : MonoBehaviour
     {
         distanceBetweenTower = TeamManager.instance.SetupDistanceBetweenTowers();
         UIManager.instance.ValidPlacement();
-
     }
 
 

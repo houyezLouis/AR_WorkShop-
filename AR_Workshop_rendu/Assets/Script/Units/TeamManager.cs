@@ -29,8 +29,8 @@ public class TeamManager : MonoBehaviour
 
     public float SetupDistanceBetweenTowers()
     {
-        Vector3 center = red.towerTransform.position + ((blue.towerTransform.position - red.towerTransform.position) / 2);
-        TerrainAR.instance.transform.position = center;
+       // Vector3 center = red.towerTransform.position + ((blue.towerTransform.position - red.towerTransform.position) / 2);
+        //TerrainAR.instance.transform.position = center;
         TerrainAR.terrainHeigth = Mathf.Abs(blue.towerTransform.position.x - red.towerTransform.position.x);
         TerrainAR.terrainWidth= Mathf.Abs(blue.towerTransform.position.z - red.towerTransform.position.z);
 

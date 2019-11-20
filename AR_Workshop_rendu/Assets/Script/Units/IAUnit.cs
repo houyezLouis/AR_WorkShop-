@@ -31,6 +31,8 @@ public class IAUnit : MonoBehaviour
 
         //Get myTower en fonction de ma team
 
+        // A enlever
+        //SetDestination();
     }
 
     // Update is called once per frame

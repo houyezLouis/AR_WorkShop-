@@ -9,12 +9,12 @@ public class UnitTemplate : ScriptableObject
     public Mesh mesh;
     public Texture scanTexture;
 
+
     [Header("STATS")]
+    public UnitType type;
     public int baseLife;
     public int baseDamage;
     public float baseMouvementSpeed;
 
     public float range; 
-
-    public float mouvementSpeed; 
 }

@@ -321,8 +321,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotPrefab: {fileID: 3925568219540337484, guid: 6dcf04f656ce4274ea23ac955bf9afe1,
     type: 3}
-  terrainFractionNumber: 4
-  width: 0
+  terrainFractionNumber: 8
+  width: 10
 --- !u!1 &619152667
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,7 +718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teamTowerPrefab: {fileID: 7953346864438993320, guid: 2fe2ca1db4cf189419cc49f7115b0774,
     type: 3}
-  slotNumber: 3
+  slotNumber: 4
   EnoughTeamTower: 0
   ValidateTerrain: 0
 --- !u!4 &1819799983
@@ -750,12 +750,12 @@ PrefabInstance:
     - target: {fileID: 7953346864438993320, guid: 2fe2ca1db4cf189419cc49f7115b0774,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7953346864438993327, guid: 2fe2ca1db4cf189419cc49f7115b0774,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.04
+      value: 10.5
       objectReference: {fileID: 0}
     - target: {fileID: 7953346864438993327, guid: 2fe2ca1db4cf189419cc49f7115b0774,
         type: 3}

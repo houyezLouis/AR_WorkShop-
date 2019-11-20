@@ -34,7 +34,7 @@ public class BuildingSlot : MonoBehaviour
         {
             if (!currentStructure.onMouvement)
             {
-                currentStructure.onSlot = true;
+                currentStructure.OnSlot(teamNumber) ;
                 isOccupied = true;
                 currentStructure.transform.position = transform.position + new Vector3(0, 0.2f, 0);
             }
@@ -42,7 +42,7 @@ public class BuildingSlot : MonoBehaviour
         if (currentStructure && currentStructure.onMouvement)
         {
             isOccupied = false;
-            currentStructure.onSlot = false;
+            currentStructure.OutSlot() ;
         }
     }
 
@@ -60,7 +60,8 @@ public class BuildingSlot : MonoBehaviour
         StructureMain structure = other.GetComponent<StructureMain>();
         if (structure == currentStructure)
         {
-            currentStructure.onSlot = false;
+
+            currentStructure.OutSlot(); ;
             isOccupied = false;
             currentStructure = null;
         }

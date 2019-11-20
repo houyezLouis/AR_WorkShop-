@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(MeshRenderer), typeof(MeshFilter), typeof(MeshRenderer))]
 public class TerrainAR : MonoBehaviour
 {
     public static TerrainAR instance;
     public GameObject slotPrefab;
+    public NavMeshSurface surface; 
 
     public int terrainFractionNumber;
     public float width;
@@ -30,6 +32,8 @@ public class TerrainAR : MonoBehaviour
     {
         transform.localScale = new Vector3(terrainHeigth, width, 0);
         spawnZoneHeigth = terrainHeigth / terrainFractionNumber;
+
+
     }
 
     public void CreateSlot()
@@ -57,5 +61,6 @@ public class TerrainAR : MonoBehaviour
         }
 
     }
+
 
 }

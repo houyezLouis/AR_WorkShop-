@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TeamTower : StructureMain
 {
-    public MeshRenderer mR;
+
     public List<UnitMain> unitsInThisTeam = new List<UnitMain>();
 
     private Vector3 lastPos; 
@@ -15,9 +15,7 @@ public class TeamTower : StructureMain
 
 
     //faudra faire +1 pour display sur L'UI
-    private int teamNumber;
-    private Color teamColor;
-    private Material mat;
+    //private int teamNumber;
 
     private void Start()
     {
@@ -29,11 +27,8 @@ public class TeamTower : StructureMain
         //Ref et setup 
         TeamManager.instance.teamList.Add(this);
         teamNumber = TeamManager.instance.teamList.IndexOf(this);
-        teamColor = TeamManager.instance.colorsForTeam[teamNumber];
-        //Visualisation de l'équipe 
-        mat = mR.material;
-        mat.color = teamColor;
-        mR.material = mat;
+        //teamColor = TeamManager.instance.colorsForTeam[teamNumber];
+        MaterialChange();
     }
 
     private void Update()
@@ -43,20 +38,13 @@ public class TeamTower : StructureMain
         {
             onMouvement = true;
             lastPos = transform.position;
-            Debug.Log("Deplacment");
         }
         else
         {
             onMouvement = false;
         }
-
-        if (onSlot)
-        {
-            Debug.Log("on slot");
-        }
-
- 
-
     }
+
+    
 
 }

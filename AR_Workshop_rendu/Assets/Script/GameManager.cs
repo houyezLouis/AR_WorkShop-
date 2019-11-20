@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
                 TerrainAR.instance.SetScale();
                 if (Input.GetKeyDown(KeyCode.R))
                 {
+                    NavMeshRebaker.instance.BuildNavMesh();
                     Debug.Log("Phase4");
                     ValidateTerrain = true;
                     TerrainAR.instance.CreateSlot();

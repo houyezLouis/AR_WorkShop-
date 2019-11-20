@@ -26,7 +26,7 @@ public class IAUnit : MonoBehaviour
 
 
         // A enlever
-        SetDestination();
+        //SetDestination();
     }
 
     // Update is called once per frame

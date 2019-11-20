@@ -106,6 +106,7 @@ public class FabriqueBehaviour : MonoBehaviour
                 else
                 {
                     SwitchType(currentSlot.teamNumber);
+                    transform.position = new Vector3(currentSlot.transform.position.x , 0, transform.position.z);
                 }
             }
             stateChange = false;

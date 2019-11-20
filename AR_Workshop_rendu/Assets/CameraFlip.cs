@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFlip : MonoBehaviour
 {
     public Camera camera;
-
+    public RenderTexture camText;
 
     void OnPreCull()
     {
@@ -25,19 +25,28 @@ public class CameraFlip : MonoBehaviour
         //GL.invertCulling = false;
     }
 
-    private void Update()
+    void OnGUI()
     {
         VPToScreenPtExample();
     }
 
-    Texture2D bottomPanel;
 
     void VPToScreenPtExample()
     {
-        var origin = Camera.main.ViewportToScreenPoint(new Vector3(0.25f, 0.1f, 0));
-        var extent = Camera.main.ViewportToScreenPoint(new Vector3(0.5f, 0.2f, 0));
+        var origin = Camera.main.ViewportToScreenPoint(new Vector3(1, 1, 0));
+        var extent = Camera.main.ViewportToScreenPoint(new Vector3(-1, -1, 0));
 
-        GUI.DrawTexture(new Rect(origin.x, origin.y, extent.x, extent.y), bottomPanel);
+        //camText.width = Screen.width;
+        //camText.height = Screen.height;
+
+        //camera.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
+
+
+        //camera.targetTexture.width = Screen.width;
+
+        GUI.DrawTexture(new Rect(origin.x, origin.y, extent.x, extent.y), camera.targetTexture);
+
+        //GUI.DrawTexture(new Rect(0, 0, 1000, 100), test);
 
         //Debug.Log(camera.ViewportToScreenPoint(new Vector3(0,0,0)));
     }

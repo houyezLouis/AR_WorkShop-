@@ -6,6 +6,12 @@ public class CameraFlip : MonoBehaviour
 {
     public Camera camera;
     public RenderTexture camText;
+    public RenderTexture textToRender;
+
+
+    private void Awake()
+    {
+    }
 
     void OnPreCull()
     {
@@ -13,6 +19,10 @@ public class CameraFlip : MonoBehaviour
         //camera.ResetProjectionMatrix();
         //Vector3 scale = new Vector3(-1, 1, 1);
         //camera.projectionMatrix = camera.projectionMatrix * Matrix4x4.Scale(scale);
+        camera.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
+        camera.targetTexture.Release();
+
+        camera.targetTexture = camText;
     }
 
     void OnPreRender()
@@ -38,8 +48,6 @@ public class CameraFlip : MonoBehaviour
 
         //camText.width = Screen.width;
         //camText.height = Screen.height;
-
-        //camera.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
 
 
         //camera.targetTexture.width = Screen.width;

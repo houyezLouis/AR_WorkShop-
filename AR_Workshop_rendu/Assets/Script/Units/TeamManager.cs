@@ -5,9 +5,11 @@ using UnityEngine;
 public class TeamManager : MonoBehaviour
 {
     public static TeamManager instance;
- 
-    public List<TeamTower> teamList = new List<TeamTower>();
-    public Color[] colorsForTeam;
+
+
+    public teamTowerInfo red;
+    public teamTowerInfo blue;
+
 
     private bool TeamSetup;
 
@@ -27,28 +29,21 @@ public class TeamManager : MonoBehaviour
 
     public float SetupDistanceBetweenTowers()
     {
-        AssignUnitTeamTarget();
-        Vector3 center = teamList[0].transform.position + ((teamList[1].transform.position - teamList[0].transform.position) / 2);
+        Vector3 center = red.towerTransform.position + ((blue.towerTransform.position - red.towerTransform.position) / 2);
         TerrainAR.instance.transform.position = center;
-        TerrainAR.terrainHeigth = teamList[1].transform.position.x - teamList[0].transform.position.x;
+        TerrainAR.terrainHeigth = Mathf.Abs(blue.towerTransform.position.x - red.towerTransform.position.x);
+        TerrainAR.terrainWidth= Mathf.Abs(blue.towerTransform.position.z - red.towerTransform.position.z);
 
-        return Vector3.Distance(teamList[0].transform.position, teamList[1].transform.position);
+        return Vector3.Distance(red.towerTransform.position, blue.towerTransform.position);
     }
+}
 
-    public void AssignUnitTeamTarget()
-    {
-        for (int i = 0; i < teamList.Count; i++)
-        {
-            if (i == 0)
-            {
-                teamList[i].ennemyTeamManagerPos = teamList[1].transform.position;
-            }
-            else
-            {
-                teamList[i].ennemyTeamManagerPos = teamList[0].transform.position;
-            }
-        }
-        GameManager.instance.EnoughTeamTower = true;
 
-    }
+[System.Serializable]
+public struct teamTowerInfo
+{  
+    public Transform towerTransform;
+    public Color teamColor;
+    public TowerInfo myTowerInfo;
+    public UnitTeam myTeam;
 }

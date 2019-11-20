@@ -7,11 +7,13 @@ public class BuildingSlot : MonoBehaviour
     public MeshRenderer mR;
 
     private bool isOccupied;
-    private StructureMain currentStructure;
+    private GameObject currentTower;
 
     public int teamNumber;
     private Color teamColor;
     private Material mat;
+
+    UnitTeam myTeam;
 
     private void Start()
     {
@@ -21,48 +23,51 @@ public class BuildingSlot : MonoBehaviour
     private void Initialisation()
     {
         //Ref et setup 
-        teamColor = TeamManager.instance.colorsForTeam[teamNumber];
+        //  teamColor = TeamManager.instance.colorsForTeam[teamNumber];
         //Visualisation de l'équipe 
+        if (teamNumber == 0)
+        {
+            teamColor = TeamManager.instance.red.teamColor;
+            myTeam = UnitTeam.Red;
+        }
+        else if (teamNumber ==1)
+        {
+            teamColor = TeamManager.instance.blue.teamColor;
+            myTeam = UnitTeam.Blue;
+        }
+
         mat = mR.material;
         mat.color = teamColor;
         mR.material = mat;
     }
 
-    private void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        if (currentStructure != null && !isOccupied )
+        if (other.gameObject.layer == 13 && myTeam == other.GetComponent<TowerInfo>().towerTeam)
         {
-            if (!currentStructure.onMouvement)
-            {
-                currentStructure.onSlot = true;
-                isOccupied = true;
-                currentStructure.transform.position = transform.position + new Vector3(0, 0.2f, 0);
-            }
-        }
-        if (currentStructure && currentStructure.onMouvement)
-        {
-            isOccupied = false;
-            currentStructure.onSlot = false;
+            currentTower = other.gameObject;
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    void SetStructure()
     {
-        StructureMain structure = other.GetComponent<StructureMain>();
-        if (structure != null)
-        {
-            currentStructure = structure;
-        }
+
     }
 
     private void OnTriggerExit(Collider other)
     {
-        StructureMain structure = other.GetComponent<StructureMain>();
-        if (structure == currentStructure)
+        if (currentTower == other.gameObject)
         {
-            currentStructure.onSlot = false;
-            isOccupied = false;
-            currentStructure = null;
+            currentTower = null;
+        }
+    }
+
+    private void Update()
+    {
+        if(currentTower != null && GameManager.instance.gameIsStart == false)
+        {
+            Vector3 newTowerPOS = new Vector3(transform.position.x, 0, currentTower.transform.position.z);
+            currentTower.transform.position = newTowerPOS;
         }
     }
 

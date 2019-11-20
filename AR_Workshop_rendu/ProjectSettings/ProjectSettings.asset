@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 18
-  productGUID: 00000000000000000000000000000000
+  productGUID: b421630573d11ef4bb237fbb3704a7c8
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -787,9 +787,9 @@ PlayerSettings:
   metroPackageVersion: 8.5.0.0
   metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: Vuforia
-  metroCertificateIssuer: Vuforia
-  metroCertificateNotAfter: 80a428773e1cd501
+  metroCertificateSubject: DefaultCompany
+  metroCertificateIssuer: DefaultCompany
+  metroCertificateNotAfter: 8098c58686bed601
   metroApplicationDescription: Vuforia Samples
   wsaImages:
     65636: Assets/Common/Icons/UWP/StoreLogo.scale-100.png

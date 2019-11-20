@@ -46,11 +46,11 @@ public class AttackUnit : MonoBehaviour
             switch (myIAUnit.currentEnnemy.layer)
             {
                 case 10:
-                    myIAUnit.currentEnnemy.GetComponent<UnitLife>().TakeDamage(-35);
+                    myIAUnit.currentEnnemy.GetComponent<UnitInfo>().TakeDamage(-35);
                     break;
 
                 case 13:
-                    myIAUnit.currentEnnemy.GetComponent<TowerLife>().TakeDamage(-35);
+                    myIAUnit.currentEnnemy.GetComponent<TowerInfo>().TakeDamage(-35);
                     break;
             }
         }

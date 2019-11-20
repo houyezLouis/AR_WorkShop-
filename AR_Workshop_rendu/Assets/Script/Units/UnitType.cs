@@ -9,3 +9,9 @@ public enum UnitType
     infanterie,
     structure
 }
+
+public enum UnitTeam
+{
+    Red,
+    Blue
+}

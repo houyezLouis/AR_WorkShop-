@@ -8,8 +8,9 @@ public class IAUnit : MonoBehaviour
     Animator myAnimator;
     NavMeshAgent myAgent;
     AttackUnit attackUnit;
+    UnitInfo myInfo;
 
-    public Transform destination;
+    Transform destination;
 
     public GameObject currentEnnemy;
 
@@ -17,16 +18,19 @@ public class IAUnit : MonoBehaviour
 
     public float attackDelay = 1;
 
+    public TowerInfo myTower;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         myAnimator = GetComponent<Animator>();
         myAgent = GetComponent<NavMeshAgent>();
         attackUnit = GetComponent<AttackUnit>();
+        myInfo = GetComponent<UnitInfo>();
 
 
-        // A enlever
-        SetDestination();
+        //Get myTower en fonction de ma team
+
     }
 
     // Update is called once per frame
@@ -51,9 +55,24 @@ public class IAUnit : MonoBehaviour
         }
     }
 
-    public void SetDestination()
+    public void SetDestination(Transform pos)
     {
+        destination = pos;
+
         myAgent.SetDestination(destination.position);
+
+        /*
+        //check if attacked
+        if (myTower.isAttacked)
+        {
+            myAgent.SetDestination(myTower.gameObject.transform.position);
+            myTower.OnNotAttacked += OnTowerNotAttacked;
+        }
+        else
+        {
+            myAgent.SetDestination(destination.position);
+        }
+        */
     }
 
     IEnumerator Attack()
@@ -62,6 +81,12 @@ public class IAUnit : MonoBehaviour
         attackUnit.Attack();
         yield return new WaitForSeconds(attackDelay);
         canAttack = true;
+    }
+
+    void OnTowerNotAttacked()
+    {
+        myAgent.SetDestination(destination.position);
+        myTower.OnNotAttacked -= OnTowerNotAttacked;
     }
 }
 

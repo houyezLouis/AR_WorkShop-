@@ -4,7 +4,23 @@ using UnityEngine;
 
 public class StructureMain : MonoBehaviour
 {
-    public bool onSlot;
+    protected bool inASlot;
     public bool onMouvement;
 
+    protected int teamNumber;
+
+    public MeshRenderer mR;
+    protected Material mat;
+
+    public virtual void OnSlot(int teamIndex)
+    {
+        inASlot = true;
+        teamNumber = teamIndex;
+    }
+
+    public virtual void OutSlot()
+    {
+        inASlot = false;
+        teamNumber = -1;
+    }
 }

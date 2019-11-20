@@ -25,11 +25,11 @@ public class bulletScript : MonoBehaviour
             switch (other.gameObject.layer)
             {
                 case 10:
-                    other.gameObject.GetComponent<UnitLife>().TakeDamage(-damage);
+                    other.gameObject.GetComponent<UnitInfo>().TakeDamage(-damage);
                     break;
 
                 case 13:
-                    other.gameObject.GetComponent<TowerLife>().TakeDamage(-damage);
+                    other.gameObject.GetComponent<TowerInfo>().TakeDamage(-damage);
                     break;
             }
         }

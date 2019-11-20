@@ -15,7 +15,7 @@ MonoBehaviour:
   mesh: {fileID: 0}
   scanTexture: {fileID: 0}
   type: 0
-  baseLife: 0
-  baseDamage: 0
-  baseMouvementSpeed: 0
-  range: 0
+  baseLife: 100
+  baseDamage: 10
+  baseMouvementSpeed: 2.8
+  range: 6

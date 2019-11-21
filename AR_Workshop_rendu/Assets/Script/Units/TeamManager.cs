@@ -26,6 +26,41 @@ public class TeamManager : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        red.myTowerInfo.OnDeath += OnTowerDeath;
+        blue.myTowerInfo.OnDeath += OnTowerDeath;
+    }
+
+    private void OnDisable()
+    {
+        red.myTowerInfo.OnDeath -= OnTowerDeath;
+        blue.myTowerInfo.OnDeath -= OnTowerDeath;
+    }
+
+    void OnTowerDeath(UnitTeam teamDead)
+    {
+        Time.timeScale = 0;
+        string textValue = "";
+        Color colorValue = Color.white;
+
+        switch (teamDead)
+        {
+            case UnitTeam.Blue:
+                textValue = "Red win !";
+                colorValue = red.teamColor;
+                break;
+
+            case UnitTeam.Red:
+                textValue = "Blue win !";
+                colorValue = blue.teamColor;
+                break;
+        }
+
+
+        UIManager.instance.DisplayEndPanel(textValue, colorValue);
+    }
+
 
     public float SetupDistanceBetweenTowers()
     {

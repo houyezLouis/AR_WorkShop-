@@ -56,7 +56,8 @@ public class UIManager : MonoBehaviour
         instruction.SetActive(false);
         btn_ValidatePlacement.SetActive(false);
        // btn_Play.SetActive(true);
-        GameManager.instance.gameIsStart = true;
+
+       // GameManager.instance.gameIsStart = true;
     }
 
     public void DisplayEndPanel(string textValue, Color colorValue)

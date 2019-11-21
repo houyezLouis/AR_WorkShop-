@@ -22,10 +22,10 @@ public class CameraFlip : MonoBehaviour
         //Vector3 scale = new Vector3(-1, 1, 1);
         //camera.projectionMatrix = camera.projectionMatrix * Matrix4x4.Scale(scale);
         //camera.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
-        camera.targetTexture.width = Screen.width;
-        camera.targetTexture.height = Screen.height;
+        //camera.targetTexture.width = Screen.width;
+        //camera.targetTexture.height = Screen.height;
 
-        ScalableBufferManager.ResizeBuffers(Screen.width, Screen.height);
+        //ScalableBufferManager.ResizeBuffers(Screen.width, Screen.height);
         //camera.targetTexture.Release();
 
         //camText = new RenderTexture(Screen.width, Screen.height, 24);

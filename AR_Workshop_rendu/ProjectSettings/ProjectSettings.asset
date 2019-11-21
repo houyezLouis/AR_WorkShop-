@@ -170,7 +170,7 @@ PlayerSettings:
   buildNumber:
     iPhone: 0
   AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 16
+  AndroidMinSdkVersion: 24
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
   aotOptions: 
@@ -821,7 +821,7 @@ PlayerSettings:
     2293910: Assets/Common/Icons/UWP/Wide310x150Logo.scale-150.png
     2293960: Assets/Common/Icons/UWP/Wide310x150Logo.scale-200.png
     2294160: Assets/Common/Icons/UWP/Wide310x150Logo.scale-400.png
-  metroTileShortName: 
+  metroTileShortName: AR_Workshop_rendu
   metroTileShowName: 0
   metroMediumTileShowName: 1
   metroLargeTileShowName: 0

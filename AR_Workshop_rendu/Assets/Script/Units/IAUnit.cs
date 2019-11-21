@@ -27,12 +27,6 @@ public class IAUnit : MonoBehaviour
         myAgent = GetComponent<NavMeshAgent>();
         attackUnit = GetComponent<AttackUnit>();
         myInfo = GetComponent<UnitInfo>();
-
-
-        //Get myTower en fonction de ma team
-
-        // A enlever
-        //SetDestination();
     }
 
     // Update is called once per frame
@@ -59,12 +53,13 @@ public class IAUnit : MonoBehaviour
 
     public void SetDestination(Transform pos)
     {
+        myTower = TeamManager.instance.GetTeamInfo(myInfo.unitTeam).myTowerInfo;
         destination = pos;
 
         myAgent.SetDestination(destination.position);
 
-        /*
         //check if attacked
+        print(myTower);
         if (myTower.isAttacked)
         {
             myAgent.SetDestination(myTower.gameObject.transform.position);
@@ -74,7 +69,6 @@ public class IAUnit : MonoBehaviour
         {
             myAgent.SetDestination(destination.position);
         }
-        */
     }
 
     IEnumerator Attack()

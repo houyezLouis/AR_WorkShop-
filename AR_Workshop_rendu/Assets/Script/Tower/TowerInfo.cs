@@ -15,6 +15,8 @@ public class TowerInfo : MonoBehaviour
 
     public LifeBar myLifeBar;
 
+
+
     private void Start()
     {
         myLifeBar.startLife = life;
@@ -46,7 +48,12 @@ public class TowerInfo : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.isTerrainSet)
-            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z);
+        //if (GameManager.instance.isTerrainSet)
+        //    transform.localPosition = new Vector3((GameManager.instance.referencedMap.transform.position.x + transform.localPosition.x),
+        //        (GameManager.instance.referencedMap.transform.position.y + transform.localPosition.y),
+        //        (GameManager.instance.referencedMap.transform.position.z + transform.localPosition.z));
+
+        //Debug.Log("referencedMap" + GameManager.instance.referencedMap.transform.position);
+
     }
 }

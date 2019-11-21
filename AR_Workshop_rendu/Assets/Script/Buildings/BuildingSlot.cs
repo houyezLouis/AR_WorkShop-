@@ -37,6 +37,7 @@ public class BuildingSlot : MonoBehaviour
         }
 
         mat = mR.material;
+        mat.SetFloat("_Mode", 2);
         mat.color = teamColor;
         mR.material = mat;
     }
@@ -67,7 +68,9 @@ public class BuildingSlot : MonoBehaviour
         if(currentTower != null && GameManager.instance.gameIsStart == false)
         {
             Vector3 newTowerPOS = new Vector3(transform.position.x, TerrainAR.instance.transform.position.y + TerrainAR.instance.transform.localScale.y/2, currentTower.transform.position.z);
+
             currentTower.transform.position = newTowerPOS;
+            currentTower.transform.rotation = Quaternion.Euler(0,90,0);
         }
     }
 

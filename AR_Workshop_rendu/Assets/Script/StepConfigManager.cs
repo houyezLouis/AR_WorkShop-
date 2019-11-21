@@ -14,6 +14,8 @@ public class StepConfigManager : MonoBehaviour
     public GameObject panelDetectMap;
     public GameObject panelNeedValidateMap;
 
+    public bool instantiatePrefab;
+
     // Steps
     public bool mapDetected = false;
     public bool mapInstanciated;
@@ -26,6 +28,7 @@ public class StepConfigManager : MonoBehaviour
     #region protected attributes
 
     protected GameObject map;
+    protected int actualStep;
 
     #endregion protected attributes
 
@@ -67,9 +70,23 @@ public class StepConfigManager : MonoBehaviour
 
     private void init()
     {
+        actualStep = 0;
+
+        instantiatePrefab = false;
+
+        mapDetected = false;
+        mapInstanciated = false;
+        mapSized = false;
+
         configFinished = false;
 
         map = GameObject.Find("MapTarget");
+    }
+
+    public void instantiate()
+    {
+        instantiatePrefab = true;
+        actualStep++;
     }
 
     public void SetMapDetector(bool state)

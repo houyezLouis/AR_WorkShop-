@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     public int slotNumber;
 
 
+    public GameObject referencedMap;
+
+
 
     public static GameManager instance;
     public static float distanceBetweenTower;
@@ -24,7 +27,7 @@ public class GameManager : MonoBehaviour
     public bool ValidateTerrain;
     private bool SetupDone;
 
-    public bool isTerrainSet;
+    public bool isTerrainSet = false;
     public bool areTowersSet;
 
 
@@ -32,6 +35,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        isTerrainSet = false;
+
         if (instance)
         {
             Destroy(this);
@@ -73,23 +78,21 @@ public class GameManager : MonoBehaviour
     //}
 
 
+    private void OnApplicationQuit()
+    {
+        previewMat.color = new Color32(11, 255, 0, 100);
+    }
+
     public void GenerateMap(Transform pos)
     {
-        previewMat.color = new Color32(11,255,0,0);
+        previewMat.color = new Color32(11, 255, 0, 0);
 
-        GameObject go = terrainPrefab;
-        go.transform.localScale = new Vector3(pos.localScale.x * 1.5f, pos.localScale.y * 0.1f, pos.localScale.z * 2.8f);
-
-        //go.transform.localScale = new Vector3(pos.localScale.x , pos.localScale.y * 0.1f, pos.localScale.z);
-       // Instantiate(go, pos.position, pos.rotation);
-        Instantiate(go, pos.position, pos.rotation /*Quaternion.Euler(0 , 90 , 0)*/);
+        referencedMap = Instantiate(terrainPrefab, pos.position, pos.rotation /*Quaternion.Euler(0 , 90 , 0)*/);
+        referencedMap.transform.localScale = new Vector3(pos.localScale.x * 1.5f, pos.localScale.y * 0.1f, pos.localScale.z * 2.8f);
 
         NavMeshRebaker.instance.surfaces[0] = TerrainAR.instance.GetComponent<NavMeshSurface>();
-        
-        NavMeshRebaker.instance.BuildNavMesh();
-        TerrainAR.instance.CreateSlot();
-        //distanceBetweenTower = TeamManager.instance.SetupDistanceBetweenTowers();
-        UIManager.instance.ValidPlacement();
+
+        ValidateMap();
     }
 
 
@@ -98,6 +101,7 @@ public class GameManager : MonoBehaviour
         NavMeshRebaker.instance.BuildNavMesh();
         TerrainAR.instance.CreateSlot();
         UIManager.instance.ValideSize();
+        isTerrainSet = true;
     }
 
     public void CheckTowerInSLot(int towerVariation)
@@ -117,8 +121,8 @@ public class GameManager : MonoBehaviour
 
     public void ValidateTowerPos()
     {
-        NavMeshRebaker.instance.BuildNavMesh();
-        TerrainAR.instance.CreateSlot();
+        //NavMeshRebaker.instance.BuildNavMesh();
+        //TerrainAR.instance.CreateSlot();
         //distanceBetweenTower = TeamManager.instance.SetupDistanceBetweenTowers();
         UIManager.instance.ValidPlacement();
     }

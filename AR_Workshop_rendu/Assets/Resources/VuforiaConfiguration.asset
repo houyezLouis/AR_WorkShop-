@@ -39,6 +39,6 @@ MonoBehaviour:
     autoInitTracker: 0
     autoStartTracker: 0
   webcam:
-    deviceNameSetInEditor: "Microsoft\xAE LifeCam HD-3000"
+    deviceNameSetInEditor: Logitech HD Webcam C310
     turnOffWebCam: 0
     renderTextureLayer: 30

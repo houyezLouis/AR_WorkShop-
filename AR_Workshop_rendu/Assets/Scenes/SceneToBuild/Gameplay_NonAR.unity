@@ -802,7 +802,7 @@ MonoBehaviour:
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
+    m_ColorMultiplier: 1.81
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
@@ -821,7 +821,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2104710149}
-        m_MethodName: GenerateMap
+        m_MethodName: ValidateTowerPos
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2273,7 +2273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instruction: {fileID: 121012027}
-  btn_ValidatePlacment: {fileID: 662968300}
+  btn_ValidatePlacement: {fileID: 662968300}
   btn_ValidateTaille: {fileID: 183631945}
   btn_Play: {fileID: 1355915070}
   sld_Width: {fileID: 951234744}
@@ -3114,9 +3114,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teamTowerPrefab: {fileID: 7953346864438993320, guid: 2fe2ca1db4cf189419cc49f7115b0774,
     type: 3}
+  terrainPrefab: {fileID: 0}
   slotNumber: 4
-  EnoughTeamTower: 0
+  towerPlacementDone: 0
   ValidateTerrain: 0
+  isTerrainSet: 0
+  areTowersSet: 0
   gameIsStart: 0
 --- !u!4 &2104710150
 Transform:

@@ -13,7 +13,12 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public static float distanceBetweenTower;
 
-    public bool EnoughTeamTower;
+    //public bool EnoughTeamTower;
+
+    public bool towerPlacementDone;
+    private int towerPlaced;
+
+
     public bool ValidateTerrain;
     private bool SetupDone;
 
@@ -75,7 +80,7 @@ public class GameManager : MonoBehaviour
         NavMeshRebaker.instance.BuildNavMesh();
         TerrainAR.instance.CreateSlot();
         //distanceBetweenTower = TeamManager.instance.SetupDistanceBetweenTowers();
-        //UIManager.instance.ValidPlacement();
+        UIManager.instance.ValidPlacement();
     }
 
 
@@ -84,5 +89,28 @@ public class GameManager : MonoBehaviour
         NavMeshRebaker.instance.BuildNavMesh();
         TerrainAR.instance.CreateSlot();
         UIManager.instance.ValideSize();
+    }
+
+    public void CheckTowerInSLot(int towerVariation)
+    {
+        towerPlaced += towerVariation;
+        if (towerPlaced == 2)
+        {
+            UIManager.instance.btn_ValidatePlacement.SetActive(true);
+            towerPlacementDone = true;
+        }
+        else
+        {
+            UIManager.instance.btn_ValidatePlacement.SetActive(false);
+            towerPlacementDone = false;
+        }
+    }
+
+    public void ValidateTowerPos()
+    {
+        NavMeshRebaker.instance.BuildNavMesh();
+        TerrainAR.instance.CreateSlot();
+        //distanceBetweenTower = TeamManager.instance.SetupDistanceBetweenTowers();
+        UIManager.instance.ValidPlacement();
     }
 }

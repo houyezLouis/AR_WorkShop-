@@ -46,6 +46,7 @@ public class BuildingSlot : MonoBehaviour
         if (other.gameObject.layer == 13 && myTeam == other.GetComponent<TowerInfo>().towerTeam)
         {
             currentTower = other.gameObject;
+            GameManager.instance.CheckTowerInSLot(1);
         }
     }
 
@@ -54,6 +55,7 @@ public class BuildingSlot : MonoBehaviour
         if (currentTower == other.gameObject)
         {
             currentTower = null;
+            GameManager.instance.CheckTowerInSLot(-1);
         }
     }
 

@@ -30,14 +30,14 @@ public class BuildingSlot : MonoBehaviour
             teamColor = TeamManager.instance.red.teamColor;
             myTeam = UnitTeam.Red;
         }
-        else if (teamNumber ==1)
+        else if (teamNumber == 1)
         {
             teamColor = TeamManager.instance.blue.teamColor;
             myTeam = UnitTeam.Blue;
         }
 
         mat = mR.material;
-        mat.SetFloat("_Mode", 2);
+        mat.SetFloat("_Mode", 3);
         mat.color = teamColor;
         mR.material = mat;
     }
@@ -49,6 +49,8 @@ public class BuildingSlot : MonoBehaviour
             Debug.Log("collide with tower");
             currentTower = other.gameObject;
             GameManager.instance.CheckTowerInSLot(1);
+
+            GameManager.instance.towers[GameManager.instance.towerPlaced - 1] = currentTower;
         }
     }
 
@@ -59,18 +61,20 @@ public class BuildingSlot : MonoBehaviour
             currentTower.transform.localPosition = Vector3.zero;
             currentTower = null;
             GameManager.instance.CheckTowerInSLot(-1);
+
+            GameManager.instance.towers[GameManager.instance.towerPlaced] = null;
         }
     }
 
     private void Update()
     {
         Debug.Log(GameManager.instance.gameIsStart);
-        if(currentTower != null && GameManager.instance.gameIsStart == false)
+        if (currentTower != null && GameManager.instance.gameIsStart == false)
         {
-            Vector3 newTowerPOS = new Vector3(transform.position.x, TerrainAR.instance.transform.position.y + TerrainAR.instance.transform.localScale.y/2, currentTower.transform.position.z);
+            Vector3 newTowerPOS = new Vector3(transform.position.x, TerrainAR.instance.transform.position.y + TerrainAR.instance.transform.localScale.y / 2, currentTower.transform.position.z);
 
             currentTower.transform.position = newTowerPOS;
-            currentTower.transform.rotation = Quaternion.Euler(0,90,0);
+            currentTower.transform.rotation = Quaternion.Euler(0, 90, 0);
         }
     }
 

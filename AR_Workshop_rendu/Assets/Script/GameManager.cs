@@ -7,12 +7,13 @@ public class GameManager : MonoBehaviour
 {
     public GameObject teamTowerPrefab;
     public GameObject terrainPrefab;
+    public GameObject redprefab;
+    public GameObject bluePrefab;
+
     public Material previewMat;
     public int slotNumber;
 
-
-    public GameObject groundRef;
-
+    public GameObject[] towers = new GameObject[2];
 
     public GameObject referencedMap;
 
@@ -24,7 +25,7 @@ public class GameManager : MonoBehaviour
     //public bool EnoughTeamTower;
 
     public bool towerPlacementDone;
-    private int towerPlaced;
+    public int towerPlaced;
 
 
     public bool ValidateTerrain;
@@ -131,9 +132,31 @@ public class GameManager : MonoBehaviour
 
     public void ValidateTowerPos()
     {
-        //NavMeshRebaker.instance.BuildNavMesh();
+        NavMeshRebaker.instance.BuildNavMesh();
         //TerrainAR.instance.CreateSlot();
-        //distanceBetweenTower = TeamManager.instance.SetupDistanceBetweenTowers();
+        distanceBetweenTower = TeamManager.instance.SetupDistanceBetweenTowers();
+
+
+        for (int i = 0; i < towers.Length; i++)
+        {
+            if (towers[i].name == redprefab.name)
+            {
+                GameObject redTower = Instantiate(redprefab, towers[i].transform.position, Quaternion.identity);
+                towers[i] = redTower;
+                TeamManager.instance.red.towerTransform = redTower.transform;
+                TeamManager.instance.red.myTowerInfo = redTower.GetComponent<TowerInfo>() ;
+            }
+            else
+            {
+                GameObject blueTower = Instantiate(bluePrefab, towers[i].transform.position, Quaternion.identity);
+                towers[i] = blueTower;
+                TeamManager.instance.blue.towerTransform = blueTower.transform;
+                TeamManager.instance.blue.myTowerInfo = blueTower.GetComponent<TowerInfo>();
+            }
+
+
+        }
+
         UIManager.instance.ValidPlacement();
     }
 }

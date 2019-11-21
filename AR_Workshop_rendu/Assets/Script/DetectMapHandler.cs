@@ -11,6 +11,7 @@ public class DetectMapHandler : MonoBehaviour, ITrackableEventHandler
     protected TrackableBehaviour.Status m_PreviousStatus;
     protected TrackableBehaviour.Status m_NewStatus;
 
+    public GameObject cardToDetect;
     public Transform panelScanMarker;
     public Transform panelMenu;
 
@@ -23,6 +24,9 @@ public class DetectMapHandler : MonoBehaviour, ITrackableEventHandler
         mTrackableBehaviour = GetComponent<TrackableBehaviour>();
         if (mTrackableBehaviour)
             mTrackableBehaviour.RegisterTrackableEventHandler(this);
+
+        panelScanMarker.gameObject.SetActive(true);
+        panelMenu.gameObject.SetActive(false);
     }
 
     protected virtual void OnDestroy()
@@ -96,6 +100,8 @@ public class DetectMapHandler : MonoBehaviour, ITrackableEventHandler
         }
         panelScanMarker.gameObject.SetActive(false);
         panelMenu.gameObject.SetActive(true);
+
+        Debug.Log("Trouvé quelque chose ?");
     }
 
 

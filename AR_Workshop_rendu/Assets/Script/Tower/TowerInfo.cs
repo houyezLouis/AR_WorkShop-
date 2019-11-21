@@ -43,4 +43,9 @@ public class TowerInfo : MonoBehaviour
 
         OnNotAttacked();
     }
+
+    private void Update()
+    {
+        transform.localPosition = new Vector3(transform.localPosition.x,transform.localPosition.y, transform.localPosition.z);
+    }
 }

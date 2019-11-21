@@ -55,6 +55,7 @@ public class BuildingSlot : MonoBehaviour
     {
         if (currentTower == other.gameObject)
         {
+            currentTower.transform.localPosition = Vector3.zero;
             currentTower = null;
             GameManager.instance.CheckTowerInSLot(-1);
         }

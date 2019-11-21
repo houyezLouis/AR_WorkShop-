@@ -3742,7 +3742,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerTeam: 0
-  life: 1000
   isAttacked: 0
   myLifeBar: {fileID: 1611944886}
 --- !u!54 &4710067589757831943

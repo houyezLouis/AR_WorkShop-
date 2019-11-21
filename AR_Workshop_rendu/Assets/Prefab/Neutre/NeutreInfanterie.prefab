@@ -415,8 +415,9 @@ GameObject:
   - component: {fileID: 2856056995778362978}
   - component: {fileID: 2879076561909561105}
   - component: {fileID: 651921353434482420}
-  - component: {fileID: 4225306742151218637}
   - component: {fileID: 4225306742151218635}
+  - component: {fileID: 759136936003313713}
+  - component: {fileID: 4232493770848313035}
   m_Layer: 14
   m_Name: NeutreInfanterie
   m_TagString: Untagged
@@ -526,7 +527,20 @@ MonoBehaviour:
   collideWithAnotherStructure: 0
   inMouvement: 0
   currentSlot: {fileID: 0}
---- !u!54 &4225306742151218637
+--- !u!65 &4225306742151218635
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2879076561909561104}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.9281497, y: 6.9755545, z: 5.600001}
+  m_Center: {x: -0.000010371211, y: 3.4780526, z: 0.016314391}
+--- !u!54 &759136936003313713
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -542,7 +556,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!65 &4225306742151218635
+--- !u!65 &4232493770848313035
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

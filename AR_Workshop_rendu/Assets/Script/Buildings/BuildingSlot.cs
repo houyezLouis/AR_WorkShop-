@@ -45,6 +45,7 @@ public class BuildingSlot : MonoBehaviour
     {
         if (other.gameObject.layer == 13 && myTeam == other.GetComponent<TowerInfo>().towerTeam)
         {
+            Debug.Log("collide with tower");
             currentTower = other.gameObject;
             GameManager.instance.CheckTowerInSLot(1);
         }
@@ -61,9 +62,10 @@ public class BuildingSlot : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(GameManager.instance.gameIsStart);
         if(currentTower != null && GameManager.instance.gameIsStart == false)
         {
-            Vector3 newTowerPOS = new Vector3(transform.position.x, 0, currentTower.transform.position.z);
+            Vector3 newTowerPOS = new Vector3(transform.position.x, TerrainAR.instance.transform.position.y + TerrainAR.instance.transform.localScale.y/2, currentTower.transform.position.z);
             currentTower.transform.position = newTowerPOS;
         }
     }

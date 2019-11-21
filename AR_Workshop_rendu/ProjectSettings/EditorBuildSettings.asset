@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FrancoisNewTest.unity
     guid: 62b81354c6bab1b42b0cc9a6f441f3b6
+  - enabled: 1
+    path: Assets/Scenes/SceneToBuild/Gameplay_NonAR.unity
+    guid: 82c12dd9a4bc0984581e6d361573bed4
   m_configObjects: {}

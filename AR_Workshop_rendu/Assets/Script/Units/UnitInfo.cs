@@ -21,6 +21,8 @@ public class UnitInfo : MonoBehaviour
 
     public LifeBar myLifeBar;
 
+    public SpriteRenderer circle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,17 @@ public class UnitInfo : MonoBehaviour
     public void SetTeam(UnitTeam value)
     {
         unitTeam = value;
+
+        switch (unitTeam)
+        {
+            case UnitTeam.Blue:
+                circle.color = Color.blue;
+                break;
+
+            case UnitTeam.Red:
+                circle.color = Color.red;
+                break;
+        }
     }
 
     public void TakeDamage(int value)

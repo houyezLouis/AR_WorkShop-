@@ -6,11 +6,12 @@ using UnityEngine;
 public class TowerInfo : MonoBehaviour
 {
     public UnitTeam towerTeam;
-    public int life = 1000;
+    int life = 1000;
 
     public bool isAttacked = false;
 
     public Action OnNotAttacked;
+    public Action<UnitTeam> OnDeath;
 
     public LifeBar myLifeBar;
 
@@ -31,7 +32,7 @@ public class TowerInfo : MonoBehaviour
         myLifeBar.SetLife(life);
         if (life <= 0)
         {
-            
+            OnDeath(towerTeam);
         }
     }
 
@@ -41,5 +42,10 @@ public class TowerInfo : MonoBehaviour
         isAttacked = false;
 
         OnNotAttacked();
+    }
+
+    private void Update()
+    {
+        transform.localPosition = new Vector3(transform.localPosition.x,transform.localPosition.y, transform.localPosition.z);
     }
 }

@@ -15,24 +15,26 @@ public class TerrainAR : MonoBehaviour
     public float myWidth;
     public float myHeigth;
 
-    private float  baseHeigth , baseWidth;
+    private float baseHeigth, baseWidth;
 
     public static float terrainHeigth;
     public static float terrainWidth;
-    public static float spawnZoneHeigth;
+
 
     private void Awake()
     {
         if (instance)
         {
-            Destroy(this);
+            Destroy(instance);
+            instance = this;
         }
         else
         {
             instance = this;
         }
-        baseWidth = myWidth;
+
         baseHeigth = myHeigth;
+        baseWidth = myWidth;
     }
 
     public void SetWidth(Slider mySlider)
@@ -45,27 +47,35 @@ public class TerrainAR : MonoBehaviour
     public void SetHeigth(Slider mySlider)
     {
 
-         myHeigth = baseHeigth +  mySlider.value;
+        myHeigth = baseHeigth + mySlider.value;
         //myHeigth = terrainHeigth + mySlider.value;
         transform.localScale = new Vector3(myHeigth, myWidth, 0.1f);
-        spawnZoneHeigth = myHeigth / terrainFractionNumber;
 
     }
 
 
     public void CreateSlot()
     {
+        terrainFractionNumber = this.terrainFractionNumber;
 
-        float fractionWidth = myWidth / GameManager.instance.slotNumber;
-        float fractionHeigth = myHeigth / terrainFractionNumber;
+        float fractionHeigth = 1f / (float)terrainFractionNumber;
 
         for (int i = 0; i < 2; i++)
         {
-            float posX = transform.position.x - myHeigth / 2 + fractionHeigth / 2 + i * (fractionHeigth * (terrainFractionNumber - 1));
-            float posY = transform.position.z ;
-            Vector3 pos = new Vector3(posX, transform.position.y + 0.2f, posY);
-            GameObject newSlot = Instantiate(slotPrefab, pos, Quaternion.Euler(90f, 0f, 0f));
-            newSlot.transform.localScale = new Vector3(fractionHeigth - fractionHeigth / 20, myWidth - fractionWidth / 20, 1);
+            Debug.Log("fractionHeigth : " + fractionHeigth);
+
+
+            float posZ = -0.5f +  fractionHeigth / 2 + i * (fractionHeigth * (terrainFractionNumber - 1));          
+            Vector3 pos = new Vector3(0, 0.55f, posZ);
+
+            //GameObject newSlot = Instantiate(slotPrefab, pos, Quaternion.Euler(90f, 0f, 0f), transform);
+
+            GameObject newSlot = Instantiate(slotPrefab, transform);
+            //newSlot.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
+            newSlot.transform.localPosition = pos;
+
+            //newSlot.transform.localScale = new Vector3(fractionHeigth - fractionHeigth / 20, myWidth/2 - fractionWidth / 20, 1);
+            newSlot.transform.localScale = new Vector3(1, fractionHeigth, 1);
             BuildingSlot slotScript = newSlot.GetComponent<BuildingSlot>();
             slotScript.teamNumber = i;
         }

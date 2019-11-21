@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GameManager : MonoBehaviour
 {
@@ -75,7 +76,12 @@ public class GameManager : MonoBehaviour
     {
         GameObject go = terrainPrefab;
         go.transform.localScale = new Vector3(pos.localScale.x * 1.5f, pos.localScale.y * 0.1f, pos.localScale.z * 2.8f);
-        Instantiate(go, pos.position, pos.rotation);
+
+        //go.transform.localScale = new Vector3(pos.localScale.x , pos.localScale.y * 0.1f, pos.localScale.z);
+       // Instantiate(go, pos.position, pos.rotation);
+        Instantiate(go, pos.position, pos.rotation /*Quaternion.Euler(0 , 90 , 0)*/);
+
+        NavMeshRebaker.instance.surfaces[0] = TerrainAR.instance.GetComponent<NavMeshSurface>();
 
         NavMeshRebaker.instance.BuildNavMesh();
         TerrainAR.instance.CreateSlot();

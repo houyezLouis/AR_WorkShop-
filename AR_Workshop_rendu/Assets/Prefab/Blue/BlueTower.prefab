@@ -902,7 +902,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerTeam: 1
   isAttacked: 0
+  ennemy: {fileID: 0}
   myLifeBar: {fileID: 1174787045}
+  col: {fileID: 8378118815622421780}
 --- !u!54 &6688532931562434995
 Rigidbody:
   m_ObjectHideFlags: 0

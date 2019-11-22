@@ -39,7 +39,14 @@ public class BuildingSlot : MonoBehaviour
         }
 
         mat = mR.material;
-        mat.SetFloat("_Mode", 3);
+        mat.SetFloat("_Mode", 2);
+        mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+        mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+        mat.SetInt("_ZWrite", 0);
+        mat.DisableKeyword("_ALPHATEST_ON");
+        mat.EnableKeyword("_ALPHABLEND_ON");
+        mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+        mat.renderQueue = 3000;
         mat.color = teamColor;
         mR.material = mat;
     }
@@ -72,18 +79,6 @@ public class BuildingSlot : MonoBehaviour
 
             GameManager.instance.towers[GameManager.instance.towerPlaced] = null;
         }
-
-
-        if (other.gameObject.layer == 14)
-        {
-            foreach(GameObject element in myFabri)
-            {
-                if(element == other.gameObject)
-                {
-                    myFabri.Remove(element);
-                }
-            }
-        }
     }
 
     private void Update()
@@ -104,8 +99,15 @@ public class BuildingSlot : MonoBehaviour
         foreach (GameObject element in myFabri)
         {
             Vector3 newTowerPOS = new Vector3(transform.position.x, TerrainAR.instance.transform.position.y + TerrainAR.instance.transform.localScale.y / 2, element.transform.parent.position.z);
-            element.transform.parent.position = newTowerPOS;
-            element.transform.parent.rotation = Quaternion.Euler(0, 90, 0);
+            element.transform.position = newTowerPOS;
+            element.transform.rotation = Quaternion.Euler(0, 90, 0);
+
+            if(Vector3.Distance(element.transform.position, element.transform.parent.position) > 8)
+            {
+                myFabri.Remove(element);
+                element.transform.localPosition = new Vector3(0,0.1f,0);
+                element.transform.localRotation = new Quaternion(0,0,0,0);
+            }
         }
     }
 }

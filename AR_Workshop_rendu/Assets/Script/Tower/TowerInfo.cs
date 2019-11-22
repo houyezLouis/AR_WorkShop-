@@ -9,6 +9,7 @@ public class TowerInfo : MonoBehaviour
     int life = 1000;
 
     public bool isAttacked = false;
+    public GameObject ennemy;
 
     public Action OnNotAttacked;
     public Action<UnitTeam> OnDeath;
@@ -22,11 +23,12 @@ public class TowerInfo : MonoBehaviour
         myLifeBar.startLife = life;
     }
 
-    public void TakeDamage(int value)
+    public void TakeDamage(int _value, GameObject _ennemy)
     {
-        life += value;
+        life += _value;
 
         isAttacked = true;
+        _ennemy = ennemy;
 
         StopAllCoroutines();
         StartCoroutine(CheckIsAttaked());
@@ -48,10 +50,11 @@ public class TowerInfo : MonoBehaviour
 
     private void Update()
     {
-        //if (GameManager.instance.isTerrainSet)
-        //    transform.localPosition = new Vector3((GameManager.instance.referencedMap.transform.position.x + transform.localPosition.x),
-        //        (GameManager.instance.referencedMap.transform.position.y + transform.localPosition.y),
-        //        (GameManager.instance.referencedMap.transform.position.z + transform.localPosition.z));
+        if (GameManager.instance.isTerrainSet)
+        {
+            transform.position = new Vector3(transform.position.x, TerrainAR.instance.transform.position.y + TerrainAR.instance.transform.localScale.y / 2, transform.position.z);
+            transform.rotation = Quaternion.Euler(0,90,0);
+        }
 
         //Debug.Log("referencedMap" + GameManager.instance.referencedMap.transform.position);
 

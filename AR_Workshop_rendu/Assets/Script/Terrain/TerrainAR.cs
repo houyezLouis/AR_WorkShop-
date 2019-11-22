@@ -9,7 +9,7 @@ public class TerrainAR : MonoBehaviour
 {
     public static TerrainAR instance;
     public GameObject slotPrefab;
-    public NavMeshSurface surface;
+    ///public NavMeshSurface surface;
 
     public int terrainFractionNumber;
     public float myWidth;

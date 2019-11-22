@@ -59,7 +59,6 @@ public class IAUnit : MonoBehaviour
         myAgent.SetDestination(destination.position);
 
         //check if attacked
-        print(myTower.isAttacked);
         if (myTower.isAttacked)
         {
             myAgent.SetDestination(myTower.ennemy.transform.position);

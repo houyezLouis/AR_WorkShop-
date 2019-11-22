@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="ARcherieV3_4" size="400.000000 400.000000" />
-    <ImageTarget name="ARcherieV3_3" size="400.000000 400.000000" />
-    <ImageTarget name="ARcherieV3_2" size="400.000000 400.000000" />
-    <ImageTarget name="ARcherieV3" size="400.000000 400.000000" />
-    <ImageTarget name="cav4_4" size="400.000000 400.000000" />
-    <ImageTarget name="cav4_3" size="400.000000 400.000000" />
-    <ImageTarget name="cav4_2" size="400.000000 400.000000" />
-    <ImageTarget name="epeeV2_4" size="400.000000 400.000000" />
-    <ImageTarget name="epeeV2_3" size="400.000000 400.000000" />
-    <ImageTarget name="epeeV2_2" size="400.000000 400.000000" />
-    <ImageTarget name="epeeV2" size="400.000000 400.000000" />
-    <ImageTarget name="Mapv6" size="400.000000 400.000000" />
-    <ImageTarget name="cav4" size="400.000000 400.000000" />
+    <ImageTarget name="Archerie4" size="8.500000 8.500000" />
+    <ImageTarget name="Archerie3" size="8.500000 8.500000" />
+    <ImageTarget name="Archerie2" size="8.500000 8.500000" />
+    <ImageTarget name="Archerie" size="8.500000 8.500000" />
+    <ImageTarget name="cavalerie4" size="8.500000 8.500000" />
+    <ImageTarget name="cavalerie3" size="8.500000 8.500000" />
+    <ImageTarget name="cavalerie2" size="8.500000 8.500000" />
+    <ImageTarget name="cavalerie" size="8.500000 8.500000" />
+    <ImageTarget name="infanterie4" size="8.500000 8.500000" />
+    <ImageTarget name="infanterie3" size="8.500000 8.500000" />
+    <ImageTarget name="infanterie2" size="8.500000 8.500000" />
+    <ImageTarget name="infanterie" size="8.500000 8.500000" />
+    <ImageTarget name="Map" size="8.500000 8.500000" />
     <ImageTarget name="towerRouge" size="8.500000 8.500000" />
     <ImageTarget name="towerBleu" size="8.500000 7.042356" />
   </Tracking>

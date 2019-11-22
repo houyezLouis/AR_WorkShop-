@@ -15,6 +15,8 @@ public class BuildingSlot : MonoBehaviour
 
     public UnitTeam myTeam;
 
+    public List<GameObject> myFabri = new List<GameObject>();
+
     private void Start()
     {
         Initialisation();
@@ -51,6 +53,11 @@ public class BuildingSlot : MonoBehaviour
 
             GameManager.instance.towers[GameManager.instance.towerPlaced - 1] = currentTower;
         }
+
+        if(other.gameObject.layer == 14)
+        {
+            myFabri.Add(other.gameObject);
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -58,11 +65,24 @@ public class BuildingSlot : MonoBehaviour
         if (currentTower == other.gameObject)
         {
             //Debug.Log("tower sortie");
+            currentTower.transform.parent.localPosition = Vector3.zero;
             currentTower.transform.localPosition = Vector3.zero;
             currentTower = null;
             GameManager.instance.CheckTowerInSLot(-1);
 
             GameManager.instance.towers[GameManager.instance.towerPlaced] = null;
+        }
+
+
+        if (other.gameObject.layer == 14)
+        {
+            foreach(GameObject element in myFabri)
+            {
+                if(element == other.gameObject)
+                {
+                    myFabri.Remove(element);
+                }
+            }
         }
     }
 
@@ -71,17 +91,21 @@ public class BuildingSlot : MonoBehaviour
         //Debug.Log("y = " + TerrainAR.instance.transform.position.y + TerrainAR.instance.transform.localScale.y / 2);
 
         //Debug.Log(GameManager.instance.gameIsStart);
-        if (currentTower != null && GameManager.instance.gameIsStart == false)
+
+        if (currentTower != null && GameManager.instance.gameIsStart == false && currentTower.transform.parent != null)
         {
-            Vector3 newTowerPOS = new Vector3(transform.position.x, TerrainAR.instance.transform.position.y + TerrainAR.instance.transform.localScale.y / 2, currentTower.transform.position.z);
+            Vector3 newTowerPOS = new Vector3(transform.position.x, TerrainAR.instance.transform.position.y + TerrainAR.instance.transform.localScale.y / 2, currentTower.transform.parent.position.z);
 
-            //Debug.Log("Go");
-
-            currentTower.transform.position = newTowerPOS;
-            currentTower.transform.rotation = Quaternion.Euler(0, 90, 0);
+            currentTower.transform.parent.position = newTowerPOS;
+            currentTower.transform.parent.rotation = Quaternion.Euler(0, 90, 0);
         }
 
 
+        foreach (GameObject element in myFabri)
+        {
+            Vector3 newTowerPOS = new Vector3(transform.position.x, TerrainAR.instance.transform.position.y + TerrainAR.instance.transform.localScale.y / 2, element.transform.parent.position.z);
+            element.transform.parent.position = newTowerPOS;
+            element.transform.parent.rotation = Quaternion.Euler(0, 90, 0);
+        }
     }
-
 }

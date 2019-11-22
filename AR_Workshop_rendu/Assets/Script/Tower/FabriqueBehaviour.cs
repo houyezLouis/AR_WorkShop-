@@ -52,7 +52,7 @@ public class FabriqueBehaviour : MonoBehaviour
 
     private void CheckPos()
     {
-        if (lastPos == transform.position)
+        if (Vector3.Distance(lastPos, transform.position) < 1)
         {
             inMouvement = false;
         }
@@ -106,7 +106,7 @@ public class FabriqueBehaviour : MonoBehaviour
                 else
                 {
                     SwitchType(currentSlot.teamNumber);
-                    transform.position = new Vector3(currentSlot.transform.position.x , 0, transform.position.z);
+                    //transform.position = new Vector3(currentSlot.transform.position.x , 0, transform.position.z);
                 }
             }
             stateChange = false;

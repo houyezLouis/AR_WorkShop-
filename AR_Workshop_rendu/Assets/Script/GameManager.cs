@@ -37,6 +37,9 @@ public class GameManager : MonoBehaviour
 
     public bool gameIsStart = false;
 
+    public GameObject redTarget;
+    public GameObject blueTarget;
+
     private void Awake()
     {
         isTerrainSet = false;
@@ -149,6 +152,8 @@ public class GameManager : MonoBehaviour
         //TerrainAR.instance.CreateSlot();
         //distanceBetweenTower = TeamManager.instance.SetupDistanceBetweenTowers();
 
+        TeamManager.instance.red.towerTransform.parent = null;
+        TeamManager.instance.blue.towerTransform.parent = null;
 
         for (int i = 0; i < towers.Length; i++)
         {

@@ -32,7 +32,7 @@ public class TowerInfo : MonoBehaviour
         life += _value;
 
         isAttacked = true;
-        _ennemy = ennemy;
+        ennemy = _ennemy;
 
         StopAllCoroutines();
         StartCoroutine(CheckIsAttaked());
@@ -69,11 +69,6 @@ public class TowerInfo : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.isTerrainSet)
-        {
-            transform.position = new Vector3(transform.position.x, TerrainAR.instance.transform.position.y + TerrainAR.instance.transform.localScale.y / 2, transform.position.z);
-            transform.rotation = Quaternion.Euler(0, 90, 0);
-        }
 
         if (col.enabled && !isDetected)
         {

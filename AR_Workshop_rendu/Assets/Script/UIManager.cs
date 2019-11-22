@@ -90,6 +90,8 @@ public class UIManager : MonoBehaviour
 
     public void Rematch()
     {
+        GameManager.instance.previewMat.color = new Color32(11, 255, 0, 100);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
     }
 }

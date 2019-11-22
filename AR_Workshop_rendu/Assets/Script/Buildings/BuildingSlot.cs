@@ -53,6 +53,8 @@ public class BuildingSlot : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
+        Debug.Log("Enter");
         if (other.gameObject.layer == 13 && myTeam == other.GetComponent<TowerInfo>().towerTeam)
         {
             currentTower = other.gameObject;

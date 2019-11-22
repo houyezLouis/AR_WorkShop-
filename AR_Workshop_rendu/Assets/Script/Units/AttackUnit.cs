@@ -50,7 +50,7 @@ public class AttackUnit : MonoBehaviour
                     break;
 
                 case 13:
-                    myIAUnit.currentEnnemy.GetComponent<TowerInfo>().TakeDamage(-35);
+                    myIAUnit.currentEnnemy.GetComponent<TowerInfo>().TakeDamage(-35, gameObject);
                     break;
             }
         }
@@ -73,5 +73,6 @@ public class AttackUnit : MonoBehaviour
         GameObject newBullet = Instantiate(bullets);
         newBullet.transform.position = bulletSpawnPos.position;
         newBullet.transform.rotation = bulletSpawnPos.rotation;
+        newBullet.GetComponent<bulletScript>().shooter = gameObject;
     }
 }

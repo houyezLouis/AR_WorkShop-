@@ -68,10 +68,16 @@ public class BuildingSlot : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("y = " + TerrainAR.instance.transform.position.y + TerrainAR.instance.transform.localScale.y / 2);
+
         Debug.Log(GameManager.instance.gameIsStart);
         if (currentTower != null && GameManager.instance.gameIsStart == false)
         {
             Vector3 newTowerPOS = new Vector3(transform.position.x, TerrainAR.instance.transform.position.y + TerrainAR.instance.transform.localScale.y / 2, currentTower.transform.position.z);
+
+            Debug.Log("Go");
+
+            
 
             currentTower.transform.position = newTowerPOS;
             currentTower.transform.rotation = Quaternion.Euler(0, 90, 0);

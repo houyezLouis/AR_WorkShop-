@@ -48,10 +48,11 @@ public class TowerInfo : MonoBehaviour
 
     private void Update()
     {
-        //if (GameManager.instance.isTerrainSet)
-        //    transform.localPosition = new Vector3((GameManager.instance.referencedMap.transform.position.x + transform.localPosition.x),
-        //        (GameManager.instance.referencedMap.transform.position.y + transform.localPosition.y),
-        //        (GameManager.instance.referencedMap.transform.position.z + transform.localPosition.z));
+        if (GameManager.instance.isTerrainSet)
+        {
+            transform.position = new Vector3(transform.position.x, TerrainAR.instance.transform.position.y + TerrainAR.instance.transform.localScale.y / 2, transform.position.z);
+            transform.rotation = Quaternion.Euler(0,90,0);
+        }
 
         //Debug.Log("referencedMap" + GameManager.instance.referencedMap.transform.position);
 

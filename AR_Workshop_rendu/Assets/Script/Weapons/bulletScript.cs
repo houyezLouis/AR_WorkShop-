@@ -7,6 +7,7 @@ public class bulletScript : MonoBehaviour
     public float speed = 1;
 
     public int damage = 10;
+    public GameObject shooter;
 
     private void Start()
     {
@@ -29,7 +30,7 @@ public class bulletScript : MonoBehaviour
                     break;
 
                 case 13:
-                    other.gameObject.GetComponent<TowerInfo>().TakeDamage(-damage);
+                    other.gameObject.GetComponent<TowerInfo>().TakeDamage(-damage, shooter);
                     break;
             }
         }

@@ -13,7 +13,7 @@ public class BuildingSlot : MonoBehaviour
     private Color teamColor;
     private Material mat;
 
-    UnitTeam myTeam;
+    public UnitTeam myTeam;
 
     private void Start()
     {
@@ -46,7 +46,6 @@ public class BuildingSlot : MonoBehaviour
     {
         if (other.gameObject.layer == 13 && myTeam == other.GetComponent<TowerInfo>().towerTeam)
         {
-            Debug.Log("collide with tower");
             currentTower = other.gameObject;
             GameManager.instance.CheckTowerInSLot(1);
 
@@ -58,6 +57,7 @@ public class BuildingSlot : MonoBehaviour
     {
         if (currentTower == other.gameObject)
         {
+            //Debug.Log("tower sortie");
             currentTower.transform.localPosition = Vector3.zero;
             currentTower = null;
             GameManager.instance.CheckTowerInSLot(-1);
@@ -68,20 +68,20 @@ public class BuildingSlot : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("y = " + TerrainAR.instance.transform.position.y + TerrainAR.instance.transform.localScale.y / 2);
+        //Debug.Log("y = " + TerrainAR.instance.transform.position.y + TerrainAR.instance.transform.localScale.y / 2);
 
-        Debug.Log(GameManager.instance.gameIsStart);
+        //Debug.Log(GameManager.instance.gameIsStart);
         if (currentTower != null && GameManager.instance.gameIsStart == false)
         {
             Vector3 newTowerPOS = new Vector3(transform.position.x, TerrainAR.instance.transform.position.y + TerrainAR.instance.transform.localScale.y / 2, currentTower.transform.position.z);
 
-            Debug.Log("Go");
-
-            
+            //Debug.Log("Go");
 
             currentTower.transform.position = newTowerPOS;
             currentTower.transform.rotation = Quaternion.Euler(0, 90, 0);
         }
+
+
     }
 
 }

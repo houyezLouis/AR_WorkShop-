@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="map" size="8.500000 8.500000" />
+    <ImageTarget name="carte" size="8.500000 8.500000" />
     <ImageTarget name="towerRouge" size="8.500000 8.500000" />
     <ImageTarget name="AilleNeutre2" size="8.500000 8.500000" />
     <ImageTarget name="AilleNeutre" size="8.500000 8.500000" />

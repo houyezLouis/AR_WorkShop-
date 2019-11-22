@@ -8,8 +8,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-    public GameObject instruction, btn_ValidatePlacement, btn_ValidateTaille, btn_Play;
-    public Slider sld_Width, sld_Heigth;
+    public GameObject instruction, btn_ValidateTaille, btn_ValidateGround, btn_ValidateTower, btn_Ready;
 
     public GameObject end_Panel, btn_end;
     public Text end_TextMain, end_Text2;
@@ -35,29 +34,47 @@ public class UIManager : MonoBehaviour
 
     private void TerrainInitialisation()
     {
-        TerrainAR.instance.SetWidth(sld_Width);
-        TerrainAR.instance.SetHeigth(sld_Heigth);
+        TerrainAR.instance.SetWidth(0);
+        TerrainAR.instance.SetHeigth(0);
     }
 
     public void ValideSize()
     {
         btn_ValidateTaille.SetActive(false);
-        sld_Width.gameObject.SetActive(false);
-        sld_Heigth.gameObject.SetActive(false);
-
         instruction.SetActive(true);
-
     }
 
 
+    public void HideInstruction()
+    {
+        btn_Ready.SetActive(false);
+        instruction.SetActive(false);
+    }
+
+    public void DisplayRemoveGroundCard()
+    {
+        instruction.GetComponent<Text>().text = "Nice !! Remove the ground card !";
+        btn_ValidateTaille.SetActive(false);
+        btn_ValidateGround.SetActive(true);
+    }
+
+    public void DisplayTowerPlaceInstruction()
+    {
+        btn_ValidateGround.SetActive(false);
+        instruction.GetComponent<Text>().text = "Please place your towers card!";
+        btn_ValidateTower.SetActive(false);
+    }
+
+    public void DisplayRemoveTowerCard()
+    {
+        instruction.GetComponent<Text>().text = "Nice !! Remove the tower cards !";
+        btn_ValidateTower.SetActive(false);
+        btn_Ready.SetActive(true);
+    }
 
     public void ValidPlacement()
     {
         instruction.SetActive(false);
-        btn_ValidatePlacement.SetActive(false);
-       // btn_Play.SetActive(true);
-
-       // GameManager.instance.gameIsStart = true;
     }
 
     public void DisplayEndPanel(string textValue, Color colorValue)

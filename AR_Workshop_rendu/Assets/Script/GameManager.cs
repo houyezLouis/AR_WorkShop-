@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -71,6 +72,8 @@ public class GameManager : MonoBehaviour
         //NavMeshRebaker.instance.surfaces[0] = TerrainAR.instance.GetComponent<NavMeshSurface>();
 
         ValidateMap();
+
+        UIManager.instance.DisplayRemoveGroundCard();
     }
 
 
@@ -105,12 +108,12 @@ public class GameManager : MonoBehaviour
         }
         else if (towerPlaced == 2)
         {
-            UIManager.instance.btn_ValidatePlacement.SetActive(true);
+            UIManager.instance.btn_ValidateTower.SetActive(true);
             towerPlacementDone = true;
         }
         else
         {
-            UIManager.instance.btn_ValidatePlacement.SetActive(false);
+            UIManager.instance.btn_ValidateTower.SetActive(false);
             towerPlacementDone = false;
         }
     }
@@ -124,6 +127,8 @@ public class GameManager : MonoBehaviour
         TeamManager.instance.red.towerTransform.parent = null;
         TeamManager.instance.blue.towerTransform.parent = null;
 
-        UIManager.instance.ValidPlacement();
+        UIManager.instance.btn_ValidateTower.SetActive(false);
+
+        UIManager.instance.instruction.GetComponent<Text>().text = "Nice !! Remove the tower cards !";
     }
 }

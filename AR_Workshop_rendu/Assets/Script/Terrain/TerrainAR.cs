@@ -37,17 +37,17 @@ public class TerrainAR : MonoBehaviour
         baseWidth = myWidth;
     }
 
-    public void SetWidth(Slider mySlider)
+    public void SetWidth(float value)
     {
         //myWidth = terrainWidth + mySlider.value;
-        myWidth = baseWidth + mySlider.value;
+        myWidth = baseWidth + value;
         transform.localScale = new Vector3(myHeigth, myWidth, 0.1f);
         //spawnZoneHeigth = terrainHeigth / terrainFractionNumber;
     }
-    public void SetHeigth(Slider mySlider)
+    public void SetHeigth(float value)
     {
 
-        myHeigth = baseHeigth + mySlider.value;
+        myHeigth = baseHeigth + value;
         //myHeigth = terrainHeigth + mySlider.value;
         transform.localScale = new Vector3(myHeigth, myWidth, 0.1f);
 

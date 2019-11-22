@@ -50,7 +50,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SceneToBuild/Gameplay_NonAR.unity
     guid: 82c12dd9a4bc0984581e6d361573bed4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Menu setup game.unity
     guid: 10935e0c0b62600458dba78f6804575d
+  - enabled: 1
+    path: Assets/Scenes/SceneToBuild/Gameplay_AR_FINAL.unity
+    guid: 581c02dc253fb32449deb823da83a973
   m_configObjects: {}

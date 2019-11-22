@@ -54,37 +54,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-    //private void Update()
-    //{
-    //    Debug.Log("Phase1");
-    //    if (TeamManager.instance.red.towerTransform != null && TeamManager.instance.blue.towerTransform != null && !SetupDone)
-    //    {
-    //        if (!EnoughTeamTower)
-    //        {
-    //            Debug.Log("Phase2");
-    //            if (Input.GetKeyDown(KeyCode.Space))
-    //            {
-    //                distanceBetweenTower = TeamManager.instance.SetupDistanceBetweenTowers();
-    //            }
-    //        }
-    //        if (!ValidateTerrain && EnoughTeamTower)
-    //        {
-    //            Debug.Log("Phase3");
-    //           // TerrainAR.instance.SetScale();
-    //            if (Input.GetKeyDown(KeyCode.R))
-    //            {
-    //                NavMeshRebaker.instance.BuildNavMesh();
-    //                Debug.Log("Phase4");
-    //                ValidateTerrain = true;
-    //                TerrainAR.instance.CreateSlot();
-    //                SetupDone = true;
-    //            }
-    //        }
-    //    }
-    //}
-
-
     private void OnApplicationQuit()
     {
         previewMat.color = new Color32(11, 255, 0, 100);
@@ -154,26 +123,6 @@ public class GameManager : MonoBehaviour
 
         TeamManager.instance.red.towerTransform.parent = null;
         TeamManager.instance.blue.towerTransform.parent = null;
-
-        for (int i = 0; i < towers.Length; i++)
-        {
-            if (towers[i].name == redprefab.name)
-            {
-                GameObject redTower = Instantiate(redprefab, towers[i].transform.position, Quaternion.identity);
-                towers[i] = redTower;
-                TeamManager.instance.red.towerTransform = redTower.transform;
-                TeamManager.instance.red.myTowerInfo = redTower.GetComponent<TowerInfo>();
-            }
-            else
-            {
-                GameObject blueTower = Instantiate(bluePrefab, towers[i].transform.position, Quaternion.identity);
-                towers[i] = blueTower;
-                TeamManager.instance.blue.towerTransform = blueTower.transform;
-                TeamManager.instance.blue.myTowerInfo = blueTower.GetComponent<TowerInfo>();
-            }
-
-
-        }
 
         UIManager.instance.ValidPlacement();
     }

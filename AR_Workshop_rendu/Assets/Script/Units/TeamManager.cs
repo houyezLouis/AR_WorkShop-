@@ -26,6 +26,12 @@ public class TeamManager : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        red.myTowerInfo.OnDeath += OnTowerDeath;
+        blue.myTowerInfo.OnDeath += OnTowerDeath;
+    }
+
     private void OnDisable()
     {
         red.myTowerInfo.OnDeath -= OnTowerDeath;

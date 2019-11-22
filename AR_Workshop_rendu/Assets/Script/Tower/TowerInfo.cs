@@ -16,6 +16,10 @@ public class TowerInfo : MonoBehaviour
 
     public LifeBar myLifeBar;
 
+    private bool isDetected;
+    public BoxCollider col;
+    private bool inSlot;
+
 
 
     private void Start()
@@ -28,7 +32,7 @@ public class TowerInfo : MonoBehaviour
         life += _value;
 
         isAttacked = true;
-        _ennemy = ennemy;
+        ennemy = _ennemy;
 
         StopAllCoroutines();
         StartCoroutine(CheckIsAttaked());
@@ -48,15 +52,36 @@ public class TowerInfo : MonoBehaviour
         OnNotAttacked();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 16 && towerTeam == other.GetComponent<BuildingSlot>().myTeam)
+        {
+            inSlot = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == 16)
+        {
+            inSlot = false;
+        }
+    }
+
     private void Update()
     {
-        if (GameManager.instance.isTerrainSet)
+
+        if (col.enabled && !isDetected)
         {
-            transform.position = new Vector3(transform.position.x, TerrainAR.instance.transform.position.y + TerrainAR.instance.transform.localScale.y / 2, transform.position.z);
-            transform.rotation = Quaternion.Euler(0,90,0);
+            isDetected = true;
         }
-
+        if (!col.enabled && isDetected)
+        {
+            isDetected = false;
+            if (inSlot)
+            {
+                GameManager.instance.CheckTowerInSLot(-1);
+            }
+        }
         //Debug.Log("referencedMap" + GameManager.instance.referencedMap.transform.position);
-
     }
 }

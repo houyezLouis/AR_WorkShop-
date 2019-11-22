@@ -30,6 +30,7 @@ public class bulletScript : MonoBehaviour
                     break;
 
                 case 13:
+                    print(shooter);
                     other.gameObject.GetComponent<TowerInfo>().TakeDamage(-damage, shooter);
                     break;
             }

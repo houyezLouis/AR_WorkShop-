@@ -30,7 +30,7 @@ public class SpawnerInfo : MonoBehaviour
         GameObject newUnit = Instantiate(prefab);
         newUnit.transform.position = spawnPos.position;
 
-        newUnit.GetComponent<UnitInfo>().unitTeam = towerTeam;
+        newUnit.GetComponent<UnitInfo>().SetTeam(towerTeam);
         newUnit.GetComponent<IAUnit>().SetDestination(GameObject.Find(towerEnnemyName).transform);
 
         StartCoroutine(SpawnUnit());

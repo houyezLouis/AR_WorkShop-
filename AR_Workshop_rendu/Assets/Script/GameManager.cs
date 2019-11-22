@@ -37,6 +37,9 @@ public class GameManager : MonoBehaviour
 
     public bool gameIsStart = false;
 
+    public GameObject redTarget;
+    public GameObject blueTarget;
+
     private void Awake()
     {
         isTerrainSet = false;
@@ -118,7 +121,20 @@ public class GameManager : MonoBehaviour
     public void CheckTowerInSLot(int towerVariation)
     {
         towerPlaced += towerVariation;
-        if (towerPlaced == 2)
+        if (towerVariation <0)
+        {
+            Debug.Log("Nuit");
+        }
+        else
+        {
+            Debug.Log("Jour");
+        }
+
+        if (towerPlaced > 2)
+        {
+            towerPlaced = 2;
+        }
+        else if (towerPlaced == 2)
         {
             UIManager.instance.btn_ValidatePlacement.SetActive(true);
             towerPlacementDone = true;
@@ -134,8 +150,10 @@ public class GameManager : MonoBehaviour
     {
         NavMeshRebaker.instance.BuildNavMesh();
         //TerrainAR.instance.CreateSlot();
-        distanceBetweenTower = TeamManager.instance.SetupDistanceBetweenTowers();
+        //distanceBetweenTower = TeamManager.instance.SetupDistanceBetweenTowers();
 
+        TeamManager.instance.red.towerTransform.parent = null;
+        TeamManager.instance.blue.towerTransform.parent = null;
 
         for (int i = 0; i < towers.Length; i++)
         {
@@ -144,7 +162,7 @@ public class GameManager : MonoBehaviour
                 GameObject redTower = Instantiate(redprefab, towers[i].transform.position, Quaternion.identity);
                 towers[i] = redTower;
                 TeamManager.instance.red.towerTransform = redTower.transform;
-                TeamManager.instance.red.myTowerInfo = redTower.GetComponent<TowerInfo>() ;
+                TeamManager.instance.red.myTowerInfo = redTower.GetComponent<TowerInfo>();
             }
             else
             {

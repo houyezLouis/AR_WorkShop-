@@ -41,6 +41,7 @@ public class UnitInfo : MonoBehaviour
     public void SetTeam(UnitTeam value)
     {
         unitTeam = value;
+        print(unitTeam);
 
         switch (unitTeam)
         {

@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="map" size="8.500000 8.500000" />
+    <ImageTarget name="Archerie4" size="8.500000 8.500000" />
+    <ImageTarget name="Archerie3" size="8.500000 8.500000" />
+    <ImageTarget name="Archerie2" size="8.500000 8.500000" />
+    <ImageTarget name="Archerie" size="8.500000 8.500000" />
+    <ImageTarget name="cavalerie4" size="8.500000 8.500000" />
+    <ImageTarget name="cavalerie3" size="8.500000 8.500000" />
+    <ImageTarget name="cavalerie2" size="8.500000 8.500000" />
+    <ImageTarget name="cavalerie" size="8.500000 8.500000" />
+    <ImageTarget name="infanterie4" size="8.500000 8.500000" />
+    <ImageTarget name="infanterie3" size="8.500000 8.500000" />
+    <ImageTarget name="infanterie2" size="8.500000 8.500000" />
+    <ImageTarget name="infanterie" size="8.500000 8.500000" />
+    <ImageTarget name="Map" size="8.500000 8.500000" />
     <ImageTarget name="towerRouge" size="8.500000 8.500000" />
-    <ImageTarget name="AilleNeutre2" size="8.500000 8.500000" />
-    <ImageTarget name="AilleNeutre" size="8.500000 8.500000" />
-    <ImageTarget name="EpeeNeutre2" size="8.500000 8.500000" />
-    <ImageTarget name="EpeeNeutre" size="8.500000 8.500000" />
-    <ImageTarget name="ArcNeutre2" size="8.500000 8.500000" />
-    <ImageTarget name="ArcNeutre" size="8.500000 8.500000" />
     <ImageTarget name="towerBleu" size="8.500000 7.042356" />
   </Tracking>
 </QCARConfig>

@@ -61,7 +61,7 @@ public class IAUnit : MonoBehaviour
         //check if attacked
         if (myTower.isAttacked)
         {
-            myAgent.SetDestination(myTower.gameObject.transform.position);
+            myAgent.SetDestination(myTower.ennemy.transform.position);
             myTower.OnNotAttacked += OnTowerNotAttacked;
         }
         else
